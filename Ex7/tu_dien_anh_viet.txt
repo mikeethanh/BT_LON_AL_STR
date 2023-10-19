@@ -2,4 +2,32 @@ abacus: dau cot , dinh cot
 abaddon: am ti , dia nguc 
 abaft: o phia sau banh lai , gan banh lai 
 abalone: bao ngu 
-abandon: su phong tung , su buong tha 
+abandon: su phong tung , su buong tha
+work: lam viec,cong viet
+fashion: thoi trang
+ply: cam ,chay
+doing: cai do,cu chi,hanh dong
+labor: nhan cong
+going: lam viec,nghi ngoi
+labour: nhan cong
+action: hanh dong 
+melody: am dieu
+specific: ranh mach
+happy: vui ve
+perfect: day du , hoan hao 
+cat: con meo 
+dog: con cho 
+hello: xin chao
+goodbye: tam biet 
+suitable: thich hop
+container: khoi 
+phone: dien thoai 
+laptop: may tinh 
+table: ban 
+chair: ghe
+library: thu vien 
+school: truong hoc 
+class: lop hoc 
+keyboard: ban phim 
+shirt: ao 
+hotel: khach san 
