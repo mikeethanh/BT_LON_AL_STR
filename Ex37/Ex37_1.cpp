@@ -76,6 +76,8 @@ public:
 };
 
 //Xay ung 1 class quan ly danh sach sinh vien bang Node
+//dung const de tranh bi thay doi du lieu khi chuyen tham chieu 
+
 class studentList {
 private:
     struct Node {
@@ -130,15 +132,15 @@ public:
 
         //check:
         Node* temp1 = head;
-        while (temp1 != nullptr) {
-            cout << "Ten: " << temp1->data.getTen() << endl;
-            cout << "Lop: " << temp1->data.getLop() << endl;
-            cout << "So dien thoai: " << temp1->data.getSdt() << endl;
-            cout << "Diem trung binh: " << temp1->data.getDtb() << endl;
-            cout << endl;
+         while (temp1 != nullptr) {
+             cout << "Ten: " << temp1->data.getTen() << endl;
+             cout << "Lop: " << temp1->data.getLop() << endl;
+             cout << "So dien thoai: " << temp1->data.getSdt() << endl;
+             cout << "Diem trung binh: " << temp1->data.getDtb() << endl;
+             cout << endl;
 
-            temp1 = temp1->next;
-        }
+             temp1 = temp1->next;
+         }
     }
 
     //Nhap danh sach tu ban phim:
@@ -192,7 +194,7 @@ public:
     void printNameandRank() {
         cout << "DANH SACH SINH VIEN BAO GOM TEN VA XEP LOAI:\n";
         Node* temp = head;
-        int i = 1; 
+        int i = 1; //STT
         while (temp != nullptr) {
             cout << "STT:" << i << endl;
             cout << "Ten:" << temp->data.getTen() << endl;
@@ -233,6 +235,7 @@ public:
         string tmp;
         string resName = "";
         while (ss >> tmp) {
+            //ham viet hoa cac chu cai dau
             tmp[0] = toupper(tmp[0]);
             resName = resName + tmp + " ";
         }
@@ -244,7 +247,8 @@ public:
             c = toupper(c);
             resClass += c;
         }
-
+           
+        //duyet tu dau node den cuoi node
         Node* temp = head;
         while(temp != nullptr) { 
             if (temp->data.getTen() == resName && temp->data.getLop() == resClass) {
@@ -282,7 +286,8 @@ public:
         student.setLop(classroom);
         student.setSdt(phoneNumber);
         student.setDtb(dtb);
-
+        
+        //bo sung vao cuoi danh sach
         Node* newNode = new Node(student);
         Node* temp = head;
         while (temp->next != nullptr) {
@@ -372,15 +377,15 @@ public:
         }
     }
 
-    //Nhap vao ho so mot hoc snh mo tu ban phim , chen ma khong lam thay 
+    //Nhap vao ho so mot hoc snh mo tu ban phim , chen ma khong lam thay doi
     //thu tu da sap xep
-    void addAndSort() {
+  void addAndSort() {
         string name;
         string classroom;
         string phoneNumber;
         float dtb;
 
-        cout << "Them sinh ven moi:" << endl;
+        cout << "Them sinh vien moi:" << endl;
         cout << "Nhap ten sinh vien: ";
         getline(cin, name);
         cout << "Nhap lop: ";
@@ -398,40 +403,89 @@ public:
         student.setDtb(dtb);
 
         Node* newNode = new Node(student);
-
+        
+        //neu ho sinh duoc them vao co diem cao nhat hoac la danh danh dang rong 
         if (head == nullptr || dtb >= head->data.getDtb()) {
             newNode->next = head;
-            head = newNode;
-            return;
+            head = newNode;           
+        } else {
+            Node* current = head;
+            Node* prev = nullptr;
+            while (newNode->data.getDtb() <= current->data.getDtb()) {
+                prev = current;
+                current = current->next;
+             }
+            prev->next = newNode;
+            newNode->next = current;
         }
+        //check:
+        Node* temp1 = head;
+        while (temp1 != nullptr) {
+            cout << "Ten: " << temp1->data.getTen() << endl;
+            cout << "Lop: " << temp1->data.getLop() << endl;
+            cout << "So dien thoai: " << temp1->data.getSdt() << endl;
+            cout << "Diem trung binh: " << temp1->data.getDtb() << endl;
+            cout << endl;
 
-        Node* current = head;
-        Node* prev = nullptr;
-        while (newNode->data.getDtb() <= current->data.getDtb()) {
-            prev = current;
-            current = current->next;
+            temp1 = temp1->next;
         }
-        prev->next = newNode;
-        newNode->next = current;
     }
 
+    
+    //luu lai tren dia khi da thay 
+    void saveToFile(const string& filename) { 
+        ofstream WriteFile(filename);
+        if(!WriteFile) { 
+            cout << "Khong mo duoc file!"<<endl;
+            return;
+        }
+        Node* temp = head;
+        //STT
+        int i = 1 ; 
+        while(temp != nullptr) { 
+            WriteFile << "STT" << i << endl;
+            WriteFile << " +Ten: " << temp->data.getTen() << endl;
+            WriteFile << " +Lop: " << temp->data.getLop() << endl;
+            WriteFile << " +So dien thoai: " << temp->data.getSdt() << endl;
+            WriteFile << " +Dtb: " << temp->data.getDtb() << endl;
+            temp = temp->next;
+            i++;
+        }
+
+        WriteFile.close();
+    }
 };
 
 int main() {
     studentList sl;
+    //nhap danh sach tu file
     sl.FileToList("studentList.txt");
     
-    //sl.inputStudentList();
+    //nhap danh sach tu ban phim
+    sl.inputStudentList();
+    
 
-    //sl.printNameandRank();
-
-    //sl.printAll();
-
-    //sl.findStudent("tai thanh", "cnttva2");
-
-   //sl.addStudent();
-
-    //sl.delStudent("cnttva2");
-
+    //in ra ten va xep hang
+    sl.printNameandRank();
+    
+    //in ra day du thong tin cua hoc sinh
+    sl.printAll();
+    
+    //tim sinh vien , nhap vao ten va lop
+    sl.findStudent("tai thanh", "cnttva2");
+   
+    //them 1 sinh vien moi
+    sl.addStudent();
+    
+    //xoa sinh vien voi lop
+    sl.delStudent("cnttva2");
+    
+    //sap xep giam dan
     sl.sortDecending();
+    
+    //them sinh vien moi va sap xep
+    sl.addAndSort();
+    
+    //luu vao file
+    sl.saveToFile("studentList_output.txt");
 }

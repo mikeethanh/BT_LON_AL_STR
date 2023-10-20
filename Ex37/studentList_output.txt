@@ -1,0 +1,25 @@
+STT1
+ +Ten: Mai Thanh 
+ +Lop: CNTTVA2
+ +So dien thoai: 0865589695
+ +Dtb: 8.7
+STT2
+ +Ten: Nguyen Minh
+ +Lop: CNTTVA2
+ +So dien thoai: 09854256343
+ +Dtb: 8.4
+STT3
+ +Ten: Tuan Minh
+ +Lop: CNTTVA1
+ +So dien thoai: 05456356366
+ +Dtb: 8.5
+STT4
+ +Ten: Nguyen Hieu 
+ +Lop: CNTTVA3
+ +So dien thoai: 02352534636
+ +Dtb: 7.2
+STT5
+ +Ten: Tien Dung
+ +Lop: CNTTVA1
+ +So dien thoai: 04235254534
+ +Dtb: 7.4
