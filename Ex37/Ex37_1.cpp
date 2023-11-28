@@ -14,7 +14,7 @@ public:
 
     Node(T data) : data(data), prev(nullptr), next(nullptr) {}
 
-    //getter va setter : lay ra cac thuoc tinh va dinh dang cac thuoc tinh
+    //getter va setter 
     T getData() {
         return data;
     }
