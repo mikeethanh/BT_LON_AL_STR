@@ -28,7 +28,7 @@ public:
     }
 
     void setData(T data) {
-        this->data = data;
+        this->ydata = data;
     }
 
     void setNext(Node* next) {
