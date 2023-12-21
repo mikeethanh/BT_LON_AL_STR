@@ -1,4 +1,4 @@
- #ifndef BTREE_H
+#ifndef BTREE_H
 #define BTREE_H 1
 #include"stdio.h"
 #include"BNode.cpp"
@@ -137,7 +137,7 @@ BNode<Keys,T>* BTree<Keys,T>::insert(Keys key, T elem)
 					  q->setParent(p);
 					  p->setLeft(q);
 					  count++;
-					  p = NULL; //d?t p=Null d? k?t thúc
+					  p = NULL; //d?t p=Null d? k?t thï¿½c
 				  }
 				  else
 					  p = p->getLeft();
@@ -210,7 +210,7 @@ void  BTree<Keys,T>::remove(Keys key)
 {
 	BNode<Keys,T>*v = search(key, root);
 	if(v==NULL) return;
-	if(v->hasLeft()&& v->hasLeft())//Có ca hai con
+	if(v->hasLeft()&& v->hasLeft())//Cï¿½ ca hai con
 	{
 		BNode<Keys,T> *leftest;		
 		leftest = GetLeftest(v->getRight());
